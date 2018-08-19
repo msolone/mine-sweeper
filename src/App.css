@@ -7,12 +7,12 @@
   margin-top: 5em;
   border: 1px solid black;
   padding: 2em;
-  font-size: 1em;
+  font-size: 0.5em;
 
 }
 
 .rows {
-  height: 5.5em;
+  height: 3em;
 }
 
 .game-board {

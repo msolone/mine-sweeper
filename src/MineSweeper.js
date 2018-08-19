@@ -28,23 +28,41 @@ class MineSweeper extends Component {
       });
   }
 
+  boxClicked = (i, j) => {
+      console.log("box clicked ", i, j)
+      fetch(`${BASE_URL}games/${this.state.game.id}/check`, {
+          method:"POST", 
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+          },
+          body:JSON.stringify({row: i, col: j})
+      }).then (resp => resp.json())
+      .then(latestGameData => {
+          console.log(latestGameData)
+          this.setState({
+              game: latestGameData
+          })  
+      })
+
+  }
+
   render() {
     return (
-    // <div>
-    //     Current Game: {this.state.game.id}
+    <div>
+        Current Game: {this.state.game.id}
       <div className='game-board'>
         
         {this.state.game.board.map((row, i) => {
           return (
-            <div className='rows'>
+            <div className='rows' key={i}>
               {row.map((col, j) => {
-                return <span className='squares'></span>;
+                return <span className='squares' onClick={() => this.boxClicked(i,j)} key={j}>{this.state.game.board[i][j]}</span>;
               })}
             </div>
           );
         })}
       </div>
-    // </div>  
+    </div>  
     );
   }
 }
