@@ -1,6 +1,18 @@
+body {
+  border: 2em solid #254441;
+  /* height: 63em; */
+  background-color: #254441;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+}
+
 .App {
   text-align: center;
   height: 10em;
+  color: #FFFFFF;
 }
 
 .game-display {
@@ -8,13 +20,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #FF6F59;
+  padding-bottom: 3em;
+  border: 5px solid #254441;
 }
 
 .squares {
+  width: 0.5em;
+  height: 0.5em;
   margin-top: 5em;
-  border: 1px solid black;
+  border: 1px solid #254441;
   padding: 2em;
-  font-size: 0.5em;
+  font-size: 0.2em;
+  background-color: #BEBEBE;
+  color: #2E6171;
+  font-weight: bold;
+  box-shadow: 3px 3px #7F7F7F;
+
 
 }
 
@@ -24,19 +46,21 @@
 
 .game-board {
   margin-top: 3em;
+  border: 5px solid #254441;
 }
 
 .youLose {
-  position: absolute;
-  top: 10em;
-  left: 12.5em;
   display: none;
+  margin: 1em;
+  font-size: 3.5em;
+  text-align: center;
 }
 
 
 .youWin {
-  position: absolute;
-  top: 10em;
-  left: 12.5em;
+  margin: 1em;
   display: none;
+  font-size: 3.5em;
 }
+
+

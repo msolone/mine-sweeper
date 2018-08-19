@@ -17,7 +17,11 @@ class MineSweeper extends Component {
   componentDidMount() {
     fetch(`${BASE_URL}games`, {
       method: "POST",
-      body: JSON.stringify({ difficult: 0 })
+      body: JSON.stringify({difficulty: 0}), 
+      headers: {
+        "Content-Type": "application/json"
+      },
+
     })
       .then(resp => resp.json())
       .then(newGame => {
@@ -46,6 +50,7 @@ class MineSweeper extends Component {
             game: latestGameData
           });
         } else if (latestGameData.state === "won") {
+
           document.querySelector(".youWin").style.display = "inline";
           console.log(latestGameData);
           this.setState({
@@ -81,7 +86,6 @@ class MineSweeper extends Component {
   render() {
     return (
       <div className="game-display">
-        <h4>Current Game: {this.state.game.id}</h4>
         <table className="game-board">
           {this.state.game.board.map((row, i) => {
             return (
