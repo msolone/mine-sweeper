@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 // import Squares from './Squares'
+// import GameOver from "./GameOver";
 
 const BASE_URL = "https://minesweeper-api.herokuapp.com/";
 
@@ -10,8 +11,7 @@ class MineSweeper extends Component {
       game: {
         board: []
       }
-      
-    }
+    };
   }
 
   componentDidMount() {
@@ -23,46 +23,88 @@ class MineSweeper extends Component {
       .then(newGame => {
         console.log("game", newGame);
         this.setState({
-          game: newGame,
+          game: newGame
         });
       });
   }
 
   boxClicked = (i, j) => {
-      console.log("box clicked ", i, j)
-      fetch(`${BASE_URL}games/${this.state.game.id}/check`, {
-          method:"POST", 
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-          },
-          body:JSON.stringify({row: i, col: j})
-      }).then (resp => resp.json())
+    console.log("box clicked ", i, j);
+    fetch(`${BASE_URL}games/${this.state.game.id}/check`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ row: i, col: j })
+    })
+      .then(resp => resp.json())
       .then(latestGameData => {
-          console.log(latestGameData)
+        if (latestGameData.state === "lost") {
+          document.querySelector(".youLose").style.display = "inline";
+          console.log(latestGameData);
           this.setState({
-              game: latestGameData
-          })  
-      })
+            game: latestGameData
+          });
+        } else if (latestGameData.state === "won") {
+          document.querySelector(".youWin").style.display = "inline";
+          console.log(latestGameData);
+          this.setState({
+            game: latestGameData
+          });
+        } else {
+          console.log(latestGameData);
+          this.setState({
+            game: latestGameData
+          });
+        }
+      });
+  };
 
-  }
+  boxRightClicked = (i, j) => {
+    console.log("box clicked ", i, j);
+    fetch(`${BASE_URL}games/${this.state.game.id}/flag`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ row: i, col: j })
+    })
+      .then(resp => resp.json())
+      .then(latestGameData => {
+        console.log(latestGameData);
+        this.setState({
+          game: latestGameData
+        });
+      });
+  };
 
   render() {
     return (
-    <div>
-        Current Game: {this.state.game.id}
-      <div className='game-board'>
-        
-        {this.state.game.board.map((row, i) => {
-          return (
-            <div className='rows' key={i}>
-              {row.map((col, j) => {
-                return <span className='squares' onClick={() => this.boxClicked(i,j)} key={j}>{this.state.game.board[i][j]}</span>;
-              })}
-            </div>
-          );
-        })}
+      <div className="game-display">
+        <h4>Current Game: {this.state.game.id}</h4>
+        <table className="game-board">
+          {this.state.game.board.map((row, i) => {
+            return (
+              <tbody key={i}>
+                <tr className="rows">
+                  {row.map((col, j) => {
+                    return (
+                      <td
+                        className="squares"
+                        key={j}
+                        onClick={() => this.boxClicked(i, j)}
+                        onContextMenu={() => this.boxRightClicked(i, j)}
+                      >
+                        {this.state.game.board[i][j]}
+                      </td>
+                    );
+                  })}
+                </tr>
+              </tbody>
+            );
+          })}
+        </table>
       </div>
-    </div>  
     );
   }
 }

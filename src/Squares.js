@@ -16,9 +16,9 @@ class Squares extends Component {
         })
   
     }
-    
+
     render() {
-        <span className='squares' onClick={() => this.boxClicked(i,j)}>{this.state.game.board[i][j]}</span>;
+        <td className='squares' onClick={() => this.boxClicked(i,j)}>{this.state.game.board[i][j]}</td>;
     }
 }
 

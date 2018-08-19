@@ -3,6 +3,13 @@
   height: 10em;
 }
 
+.game-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .squares {
   margin-top: 5em;
   border: 1px solid black;
@@ -17,4 +24,19 @@
 
 .game-board {
   margin-top: 3em;
+}
+
+.youLose {
+  position: absolute;
+  top: 10em;
+  left: 12.5em;
+  display: none;
+}
+
+
+.youWin {
+  position: absolute;
+  top: 10em;
+  left: 12.5em;
+  display: none;
 }

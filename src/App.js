@@ -8,6 +8,8 @@ class App extends Component {
       <div className="App">
         <h1>Mine Sweeper!</h1>
         <MineSweeper />
+        <h1 className='youLose'>You Lose!</h1>
+        <h1 className='youWin'>You Win!</h1>
       </div>
     );
   }
