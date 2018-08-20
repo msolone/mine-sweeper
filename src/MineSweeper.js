@@ -10,9 +10,10 @@ class MineSweeper extends Component {
     this.state = {
       game: {
         board: []
-      }
+      },
     };
   }
+
 
   componentDidMount() {
     fetch(`${BASE_URL}games`, {
