@@ -7,6 +7,7 @@ body {
 
 h1 {
   margin: 0;
+  padding: 0;
 }
 
 .App {
@@ -41,26 +42,36 @@ h1 {
 }
 
 .rows {
-  height: 3em;
+  height: 1em;
 }
 
 .game-board {
-  margin-top: 3em;
   border: 5px solid #254441;
 }
 
-.youLose {
-  display: none;
-  margin: 1em;
-  font-size: 3.5em;
-  text-align: center;
+.playing-message {
+  margin: 0.1em;
+ 
 }
 
-
-.youWin {
-  margin: 1em;
-  display: none;
-  font-size: 3.5em;
+.difficulty-level {
+display: flex;
 }
 
+.reset-button {
+  margin: 1em;
+  font-size: 1.5em;
+}
 
+.blue-num {
+  color: blue;
+  font-size: 2em;
+}
+
+.green-num {
+  color: green;
+  background-color: pink;
+  font-size: 2em;
+  width: 100%;
+  height: auto;
+}
