@@ -27,12 +27,12 @@ h1 {
 }
 
 .squares {
-  width: 0.5em;
-  height: 0.5em;
+  width: 2.85em;
+  height: 2.85em;
   margin-top: 5em;
   border: 1px solid #254441;
   padding: 2em;
-  font-size: 0.2em;
+  font-size: 0.5em;
   background-color: #BEBEBE;
   color: #2E6171;
   font-weight: bold;
@@ -70,8 +70,46 @@ display: flex;
 
 .green-num {
   color: green;
-  background-color: pink;
   font-size: 2em;
-  width: 100%;
-  height: auto;
+}
+
+.red-num {
+  color: red;
+  font-size: 2em;
+}
+
+.purple-num {
+  color: purple;
+  font-size: 2em;
+}
+
+.black-num {
+  color: black;
+  font-size: 2em;
+}
+
+.maroon-num {
+  color: maroon;
+  font-size: 2em;
+}
+
+.gray-num {
+  color: gray;
+  font-size: 2em;
+}
+
+.turquoise-num {
+  color: turquoise;
+  font-size: 2em;
+}
+
+.blank-square {
+  background-color: antiquewhite;
+}
+/* .flag {
+  background-color: yellow;
+} */
+
+.flag >span {
+  font-size: 2.5em;
 }
