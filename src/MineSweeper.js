@@ -31,6 +31,12 @@ class MineSweeper extends Component {
       });
   }
 
+  componentDidMount() {
+    this.setState({
+      message: "Let's Play"
+    }, this.createGame())
+  }
+
   boxClicked = (i, j) => {
     if (this.state.game.state !== "lost" && this.state.game.state !== "won") {
       console.log("box clicked ", i, j);
@@ -59,7 +65,7 @@ class MineSweeper extends Component {
             console.log(latestGameData);
             this.setState({
               game: latestGameData,
-              message: "Keep Playing"
+              message: "Look out for Bombs!"
             });
           }
         });
@@ -67,7 +73,9 @@ class MineSweeper extends Component {
   };
 
   boxRightClicked = (event, i, j) => {
+    
     event.preventDefault();
+    if (this.state.game.state !== "lost" && this.state.game.state !== "won") {
     console.log("box clicked ", i, j);
     fetch(`${BASE_URL}games/${this.state.game.id}/flag`, {
       method: "POST",
@@ -83,6 +91,7 @@ class MineSweeper extends Component {
           game: latestGameData
         });
       });
+    }
   };
 
   easyMode = () => {
